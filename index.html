@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CosmosCommand — Deep Space Mission Control & Cosmic Observatory</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌌</text></svg>">
+
+  <!-- Core Sci-Fi & Cockpit Stylesheets -->
+  <link rel="stylesheet" href="css/cockpit.css">
+  <link rel="stylesheet" href="css/calendar.css">
+  <link rel="stylesheet" href="css/news.css">
+  <link rel="stylesheet" href="css/orrery.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <!-- Three.js (WebGL 3D Engine for Orrery & Asteroid Radar) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+  <div class="cockpit-container">
+
+    <!-- 1. TOP LIVE DEEP SPACE MARQUEE TICKER -->
+    <header class="marquee-ticker-bar">
+      <div class="ticker-label">
+        <span class="ticker-pulse"></span> LIVE SPACE WIRE
+      </div>
+      <div class="marquee-ticker-viewport">
+        <div id="marquee-ticker-content" class="marquee-ticker-content">
+          <!-- Populated by CosmosNewsAPI -->
+          <span class="ticker-item"><span class="ticker-headline">Establishing deep space communications link...</span></span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. COCKPIT MISSION CONTROL HEADER -->
+    <header class="cockpit-header">
+      <div class="brand-section">
+        <div class="brand-logo-icon">🪐</div>
+        <div class="brand-text">
+          <h1>COSMOSCOMMAND</h1>
+          <p>DEEP SPACE OBSERVATORY & MISSION MATRIX // TELEMETRY LINK ACTIVE</p>
+        </div>
+      </div>
+
+      <!-- View Mode Switcher -->
+      <nav class="view-mode-tabs">
+        <button class="view-tab-btn active" data-view="CALENDAR">
+          <span>📅</span> CALENDAR
+        </button>
+        <button class="view-tab-btn" data-view="RADAR_3D">
+          <span>🛰️</span> 3D RADAR
+        </button>
+        <button class="view-tab-btn" data-view="TIMELINE">
+          <span>⏱️</span> TIMELINE
+        </button>
+        <button class="view-tab-btn" data-view="AGENT_PIPELINE">
+          <span>🤖</span> AGENT PIPELINE
+        </button>
+      </nav>
+
+      <!-- Utilities & Audio Synthesizer Toggle -->
+      <div class="header-utilities">
+        <button id="btn-audio-toggle" class="btn-cyber" title="Toggle Sci-Fi Telemetry Audio Synthesizer">
+          <span class="audio-icon">🔇</span>
+          <span class="audio-text">AUDIO: OFF</span>
+        </button>
+        <button id="btn-toggle-news-drawer" class="btn-cyber" title="Open/Close Deep Space News Wire">
+          <span>📰</span>
+          <span>DISPATCHES</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- 3. LIVE T-MINUS COUNTDOWN HUD BAR -->
+    <section class="hud-countdown-bar">
+      <!-- Next Launch -->
+      <div class="countdown-box box-launch">
+        <div class="countdown-header">
+          <span class="countdown-label">🚀 NEXT ORBITAL LAUNCH</span>
+          <span class="day-event-count" id="stat-launches-count">--</span>
+        </div>
+        <div id="timer-next-launch">
+          <div class="countdown-digits">T- MINUS SCANNING...</div>
+        </div>
+      </div>
+
+      <!-- Nearest Asteroid Close Approach -->
+      <div class="countdown-box box-asteroid">
+        <div class="countdown-header">
+          <span class="countdown-label">☄️ NEAREST ASTEROID FLYBY</span>
+          <span class="day-event-count" id="stat-asteroid-count">--</span>
+        </div>
+        <div id="timer-next-asteroid">
+          <div class="countdown-digits">CALCULATING TRAJECTORY...</div>
+        </div>
+      </div>
+
+      <!-- Next Astronomical Phenomenon -->
+      <div class="countdown-box box-natural">
+        <div class="countdown-header">
+          <span class="countdown-label">🌌 CELESTIAL PHENOMENON</span>
+          <span class="day-event-count" id="stat-astro-count">--</span>
+        </div>
+        <div id="timer-next-natural">
+          <div class="countdown-digits">EPHEMERIS COMPUTING...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Telemetry Activity Sweep Bar -->
+    <div id="telemetry-loader-bar" class="telemetry-loader-bar"></div>
+
+    <!-- 4. MAIN WORKSPACE AREA -->
+    <div class="cockpit-main-layout">
+
+      <!-- Viewports Area -->
+      <main class="cockpit-viewports-area">
+
+        <!-- VIEW 1: HOLOGRAPHIC MONTHLY CALENDAR -->
+        <div id="view-calendar-wrapper">
+          <!-- Calendar Controls Toolbar -->
+          <div class="calendar-toolbar">
+            <div class="month-nav-group">
+              <button id="btn-prev-month" class="btn-nav-arrow" title="Previous Month">◀</button>
+              <h2 id="current-month-display" class="current-month-display">OCTOBER 2026</h2>
+              <button id="btn-next-month" class="btn-nav-arrow" title="Next Month">▶</button>
+              <button id="btn-today" class="btn-cyber" style="padding: 4px 10px;">TODAY</button>
+            </div>
+
+            <!-- 5-in-1 Category Filter Chips -->
+            <div class="calendar-filters-group">
+              <div class="filter-chip active chip-launches" data-category="launches">
+                <span class="filter-dot"></span> Launches
+              </div>
+              <div class="filter-chip active chip-anniv" data-category="anniversaries">
+                <span class="filter-dot"></span> Anniversaries
+              </div>
+              <div class="filter-chip active chip-natural" data-category="natural">
+                <span class="filter-dot"></span> Celestial
+              </div>
+              <div class="filter-chip active chip-asteroids" data-category="asteroids">
+                <span class="filter-dot"></span> Asteroids
+              </div>
+              <div class="filter-chip active chip-news" data-category="news">
+                <span class="filter-dot"></span> News
+              </div>
+            </div>
+
+            <!-- Agency Filter & Search -->
+            <div class="search-agency-controls">
+              <select id="agency-filter-select" class="cyber-select" title="Filter by Space Agency">
+                <option value="ALL">All Agencies</option>
+                <option value="NASA">NASA (USA)</option>
+                <option value="ISRO">ISRO (India)</option>
+                <option value="ESA">ESA (Europe)</option>
+                <option value="SpaceX">SpaceX</option>
+                <option value="JAXA">JAXA (Japan)</option>
+                <option value="CNSA">CNSA (China)</option>
+                <option value="Roscosmos">Roscosmos</option>
+                <option value="Rocket Lab">Rocket Lab</option>
+              </select>
+
+              <div class="cyber-search-box">
+                <input id="search-events-input" type="text" placeholder="Search mission, moon, asteroid...">
+              </div>
+            </div>
+          </div>
+
+          <!-- Monthly Grid Card -->
+          <div class="calendar-grid-card">
+            <div class="calendar-weekdays-row">
+              <div class="weekday-header">SUN</div>
+              <div class="weekday-header">MON</div>
+              <div class="weekday-header">TUE</div>
+              <div class="weekday-header">WED</div>
+              <div class="weekday-header">THU</div>
+              <div class="weekday-header">FRI</div>
+              <div class="weekday-header">SAT</div>
+            </div>
+            <div id="calendar-grid-cells" class="calendar-cells-matrix">
+              <!-- Dynamically populated by CosmosApp.renderCalendarGrid() -->
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 2: 3D SPACE RADAR & ORRERY (Three.js) -->
+        <div id="view-radar-wrapper" class="hidden">
+          <div class="radar-view-container">
+            <div id="radar-3d-canvas-container" class="radar-canvas-container"></div>
+            
+            <!-- Radar HUD Overlay -->
+            <div class="radar-hud-overlay">
+              <div class="radar-hud-top">
+                <div class="radar-tag">
+                  <span class="radar-sweep-icon"></span>
+                  <span>ORBITAL RADAR // ACTIVE MONTH ASTEROID VECTORS</span>
+                </div>
+                <div class="radar-legend">
+                  <div class="legend-item"><span class="legend-color legend-earth"></span> Earth (Center)</div>
+                  <div class="legend-item"><span class="legend-color legend-moon"></span> Lunar Orbit (18 units)</div>
+                  <div class="legend-item"><span class="legend-color legend-neo"></span> Near-Earth Asteroid Flybys</div>
+                </div>
+              </div>
+              <div class="radar-reticle"></div>
+              <div class="radar-hud-bottom">
+                <div class="radar-instructions">
+                  CLICK & DRAG TO ORBIT // SCROLL WHEEL TO ZOOM // REAL-TIME NASA CNEOS TRAJECTORIES
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 3: CHRONOLOGICAL TIMELINE STREAM -->
+        <div id="view-timeline-wrapper" class="hidden">
+          <div class="timeline-wrapper">
+            <div id="timeline-events-container" class="timeline-events-container">
+              <!-- Populated by CosmosApp.renderTimeline() -->
+            </div>
+          </div>
+        </div>
+
+        <!-- VIEW 4: AGENT PIPELINE MONITOR (Discovery & Verification Telemetry) -->
+        <div id="view-pipeline-wrapper" class="hidden">
+          <div class="pipeline-dashboard-card">
+            <div class="pipeline-header-bar">
+              <div class="pipeline-title-group">
+                <span class="pipeline-pulse-dot"></span>
+                <h3>MULTI-AGENT INTELLIGENCE PIPELINE</h3>
+                <span class="pipeline-ver-tag">v1.0 Source & Integrity Autonomous Engine</span>
+              </div>
+              <div class="pipeline-actions">
+                <button id="btn-trigger-pipeline-audit" class="btn-cyber" onclick="window.cosmosApp.triggerPipelineAudit()">
+                  <span>⚡</span> RUN AUDIT SCAN
+                </button>
+              </div>
+            </div>
+
+            <!-- Agent Metrics Status Grid -->
+            <div class="pipeline-metrics-grid">
+              <div class="pipeline-metric-card">
+                <span class="pmetric-label">PHASE 1: DISCOVERED</span>
+                <span id="pmetric-discovered" class="pmetric-val">39</span>
+                <span class="pmetric-sub">NASA, ESA, SNAPI Staged</span>
+              </div>
+              <div class="pipeline-metric-card metric-approved">
+                <span class="pmetric-label">PHASE 2: SOURCE & INTEGRITY VERIFIED</span>
+                <span id="pmetric-approved" class="pmetric-val">26</span>
+                <span class="pmetric-sub">≥ 85% Confidence & Signed</span>
+              </div>
+              <div class="pipeline-metric-card metric-quarantined">
+                <span class="pmetric-label">QUARANTINED / REJECTED</span>
+                <span id="pmetric-quarantined" class="pmetric-val">13</span>
+                <span class="pmetric-sub">&lt; 85% Conf. or Unwhitelisted</span>
+              </div>
+              <div class="pipeline-metric-card metric-score">
+                <span class="pmetric-label">MEAN CONFIDENCE RATING</span>
+                <span id="pmetric-confidence" class="pmetric-val">96.2%</span>
+                <span class="pmetric-sub">Cryptographically Signed</span>
+              </div>
+            </div>
+
+            <!-- Pipeline Live Audit Stream -->
+            <div class="pipeline-audit-stream-container">
+              <div class="stream-header">
+                <h4>🔍 SOURCE & INTEGRITY AUDIT STREAM (RECENTLY AUDITED CANDIDATES)</h4>
+              </div>
+              <div id="pipeline-audit-table-body" class="pipeline-audit-table">
+                <!-- Dynamically populated from pipeline metrics -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- SIDE TERMINAL: DEEP SPACE NEWS WIRE -->
+      <aside id="news-side-terminal" class="news-side-terminal">
+        <div class="news-terminal-header">
+          <div class="news-terminal-title">
+            <span>📡</span>
+            <span>SPACE NEWS WIRE</span>
+          </div>
+          <span class="day-event-count" id="stat-news-count">0</span>
+        </div>
+        <div id="news-terminal-list" class="news-terminal-list">
+          <!-- Populated by CosmosNewsAPI -->
+        </div>
+      </aside>
+
+    </div>
+
+  </div>
+
+  <!-- EVENT TELEMETRY DOSSIER MODAL -->
+  <div id="modal-backdrop" class="modal-backdrop"></div>
+  <div id="event-dossier-modal" class="event-dossier-modal" role="dialog" aria-modal="true">
+    <div class="modal-header">
+      <div class="modal-title-group">
+        <span id="modal-category-badge" class="modal-category-badge">CATEGORY</span>
+        <h2 id="modal-event-title" class="modal-event-title">Mission Title</h2>
+      </div>
+      <button id="btn-close-modal" class="btn-modal-close" title="Close Dossier">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <img id="modal-hero-image" class="modal-hero-image" src="" alt="Event Hero Image" style="display: none;">
+
+      <div class="modal-datetime-bar">
+        <span>📅 <strong id="modal-date">Date</strong></span>
+        <span>🕐 <strong id="modal-time">Time</strong></span>
+      </div>
+
+      <div id="modal-specs-grid" class="modal-specs-grid">
+        <!-- Specs populated dynamically -->
+      </div>
+
+      <div class="modal-description-box">
+        <p id="modal-description" class="modal-description">Detailed mission parameters and telemetry data.</p>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button id="btn-modal-ics" class="btn-ics-export">
+        <span>📅</span> ADD TO GOOGLE / APPLE CALENDAR (.ICS)
+      </button>
+    </div>
+  </div>
+
+  <!-- PIPELINE AUTOMATED DATASETS -->
+  <script src="pipeline/data/verified_intel.js"></script>
+  <script src="pipeline/data/pipeline_metrics.js"></script>
+
+  <!-- SCRIPTS IN ARCHITECTURAL ORDER -->
+  <script src="js/utils/cache.js"></script>
+  <script src="js/utils/audio.js"></script>
+  <script src="js/utils/ics.js"></script>
+  <script src="js/data/anniversaries.js"></script>
+  <script src="js/astronomy/showers.js"></script>
+  <script src="js/astronomy/engine.js"></script>
+  <script src="js/api/launches.js"></script>
+  <script src="js/api/asteroids.js"></script>
+  <script src="js/api/news.js"></script>
+  <script src="js/visualizer/orrery3d.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>

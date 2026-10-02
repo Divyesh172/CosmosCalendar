@@ -1,0 +1,124 @@
+/**
+ * CosmosCommand - 3D Orrery & Space Radar Stylesheet
+ */
+
+.radar-view-container {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-neon);
+  border-radius: 10px;
+  position: relative;
+  height: 680px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+.radar-canvas-container {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+}
+
+.radar-canvas-container:active {
+  cursor: grabbing;
+}
+
+/* Radar Overlay HUD Elements */
+.radar-hud-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 18px;
+}
+
+.radar-hud-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.radar-tag {
+  background: rgba(3, 7, 18, 0.75);
+  border: 1px solid var(--border-neon);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radar-sweep-icon {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-cyan);
+  animation: radar-blink 1s infinite alternate;
+}
+
+@keyframes radar-blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+.radar-legend {
+  background: rgba(3, 7, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.legend-color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-earth { background: #38bdf8; box-shadow: 0 0 6px #38bdf8; }
+.legend-moon { background: #94a3b8; }
+.legend-neo { background: #ef4444; box-shadow: 0 0 6px #ef4444; }
+
+.radar-hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.radar-instructions {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  background: rgba(3, 7, 18, 0.6);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.radar-reticle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 220px;
+  height: 220px;
+  border: 1px dashed rgba(56, 189, 248, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+}

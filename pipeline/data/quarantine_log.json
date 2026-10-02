@@ -1,0 +1,346 @@
+{
+  "stats": {
+    "total_audited": 39,
+    "approved_count": 26,
+    "quarantined_count": 13,
+    "average_confidence": 96.2,
+    "audit_timestamp": "2026-10-01T12:33:01.711110+00:00"
+  },
+  "quarantined_events": [
+    {
+      "candidate": {
+        "candidate_id": "nasa-6658659",
+        "title": "An Agricultural \u201cIsland\u201d in the Saskatchewan River Delta",
+        "raw_date": "Thu, 01 Oct 2026 04:00:00 +0000",
+        "publisher": "NASA",
+        "agency": "NASA",
+        "source_url": "https://science.nasa.gov/earth/earth-observatory/an-agricultural-island-in-the-saskatchewan-river-delta/",
+        "summary": "Surrounded by wetlands, Manitoba\u2019s northernmost farmland near The Pas turns from green to brown over the 2026 growing season.",
+        "discovery_source": "NASA Official RSS",
+        "discovered_at": "2026-10-01T12:32:59.076083+00:00",
+        "domain": "nasa.gov",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.706058+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "nasa-1620900",
+        "title": "Star Trails",
+        "raw_date": "Wed, 30 Sep 2026 17:50:50 +0000",
+        "publisher": "NASA",
+        "agency": "NASA",
+        "source_url": "https://www.nasa.gov/image-article/star-trails/",
+        "summary": "This long-duration image shows star trails above Earth and the blue lights of fishing boats and the yellow lights of Indonesian cities stretching below the International Space Station as it orbited 258 miles above the Banda Sea on Sept. 20, 2026. Image credit: NASA/Anil Menon",
+        "discovery_source": "NASA Official RSS",
+        "discovered_at": "2026-10-01T12:32:59.076083+00:00",
+        "domain": "nasa.gov",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "Title length inadequate or spam signatures detected"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": false
+      },
+      "quarantined_at": "2026-10-01T12:33:01.707556+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "nasa-106659",
+        "title": "APOD: 2026 September 30 \u2013 Arp 78: Peculiar Galaxy in Aries",
+        "raw_date": "Wed, 30 Sep 2026 04:05:00 +0000",
+        "publisher": "NASA",
+        "agency": "NASA",
+        "source_url": "https://science.nasa.gov/image-article/apod-2026-september-30-arp-78-peculiar-galaxy-in-aries/",
+        "summary": "APOD Science APOD APOD: 2026 September 30 \u2013\u2026 Today\u2019s APOD Archive Submissions Index Search Calendar RSS Education About Discuss \u00a0 APOD Astronomy Picture of the Day Discover the cosmos! Each day a different image or photograph of our fascinating universe is featured, along with a ",
+        "discovery_source": "NASA Official RSS",
+        "discovered_at": "2026-10-01T12:32:59.076083+00:00",
+        "domain": "nasa.gov",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.707556+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "nasa-3499577",
+        "title": "Powerful Storms Continue to Prowl the Pacific",
+        "raw_date": "Wed, 30 Sep 2026 04:01:00 +0000",
+        "publisher": "NASA",
+        "agency": "NASA",
+        "source_url": "https://science.nasa.gov/earth/earth-observatory/powerful-storms-continue-to-prowl-the-pacific/",
+        "summary": "Hurricanes Polo and Nolo sent destructive effects ashore amid an active season in the northeastern and central Pacific.",
+        "discovery_source": "NASA Official RSS",
+        "discovered_at": "2026-10-01T12:32:59.076083+00:00",
+        "domain": "nasa.gov",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.707556+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "esa-1705606",
+        "title": "\u03b5psilon",
+        "raw_date": "Wed, 21 Jan 2026 13:54:00 +0100",
+        "publisher": "European Space Agency",
+        "agency": "ESA",
+        "source_url": "https://www.esa.int/Science_Exploration/Human_and_Robotic_Exploration/epsilon",
+        "summary": "\u03b5psilon",
+        "discovery_source": "ESA Official RSS",
+        "discovered_at": "2026-10-01T12:33:00.495644+00:00",
+        "domain": "esa.int",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 60,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found",
+        "Title length inadequate or spam signatures detected"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": false
+      },
+      "quarantined_at": "2026-10-01T12:33:01.707556+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "esa-2091175",
+        "title": "Week in images: 21-25 Sep 2026",
+        "raw_date": "Fri, 25 Sep 2026 15:10:00 +0200",
+        "publisher": "European Space Agency",
+        "agency": "ESA",
+        "source_url": "https://www.esa.int/About_Us/Week_in_images/Week_in_images_21-25_Sep_2026",
+        "summary": "Week in images: 21-25 Sep 2026\n\tDiscover our week through the lens",
+        "discovery_source": "ESA Official RSS",
+        "discovered_at": "2026-10-01T12:33:00.495644+00:00",
+        "domain": "esa.int",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.708587+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "esa-6749834",
+        "title": "Week in images: 14-18 Sep 2026",
+        "raw_date": "Fri, 18 Sep 2026 15:05:00 +0200",
+        "publisher": "European Space Agency",
+        "agency": "ESA",
+        "source_url": "https://www.esa.int/About_Us/Week_in_images/Week_in_images_14-18_Sep_2026",
+        "summary": "Week in images: 14-18 Sep 2026\n\tDiscover our week through the lens",
+        "discovery_source": "ESA Official RSS",
+        "discovered_at": "2026-10-01T12:33:00.495644+00:00",
+        "domain": "esa.int",
+        "candidate_type": "agency_dispatch"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.708587+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40183",
+        "title": "An Agricultural \u201cIsland\u201d in the Saskatchewan River Delta",
+        "raw_date": "2026-10-01T04:00:00Z",
+        "publisher": "NASA",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://science.nasa.gov/earth/earth-observatory/an-agricultural-island-in-the-saskatchewan-river-delta/",
+        "summary": "Surrounded by wetlands, Manitoba\u2019s northernmost farmland near The Pas turns from green to brown over the 2026 growing season.",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663008+00:00",
+        "domain": "science.nasa.gov",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "No recognized aerospace entities or mission parameters found"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": false,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.709588+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40180",
+        "title": "LTG David Miller Nominated as Next Leader of U.S. Space Command",
+        "raw_date": "2026-10-01T01:13:53Z",
+        "publisher": "SpacePolicyOnline.com",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://spacepolicyonline.com/news/ltg-david-miller-nominated-as-next-leader-of-u-s-space-command/",
+        "summary": "U.S. Space Force Lieutenant General David Miller, Jr. has been nominated as the next Commander of U.S. Space Command, succeeding Gen. Stephen Whiting who will retire early next year. Yesterday, [\u2026]",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663008+00:00",
+        "domain": "spacepolicyonline.com",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 52,
+      "failure_reasons": [
+        "Domain 'spacepolicyonline.com' not in authoritative aerospace whitelist"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": false,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.709588+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40172",
+        "title": "Star Trails",
+        "raw_date": "2026-09-30T17:50:50Z",
+        "publisher": "NASA",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://www.nasa.gov/image-article/star-trails/",
+        "summary": "This long-duration image shows star trails above Earth and the blue lights of fishing boats and the yellow lights of Indonesian cities stretching below the International Space Station as it orbited 258 miles above the Banda Sea on Sept. 20, 2026. Image credit: NASA/Anil Menon",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663646+00:00",
+        "domain": "www.nasa.gov",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 80,
+      "failure_reasons": [
+        "Title length inadequate or spam signatures detected"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": false
+      },
+      "quarantined_at": "2026-10-01T12:33:01.710586+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40171",
+        "title": "So what's happening with Russia's new, long-delayed crewed spacecraft?",
+        "raw_date": "2026-09-30T16:48:56Z",
+        "publisher": "Arstechnica",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://arstechnica.com/space/2026/09/so-whats-happening-with-russias-new-long-delayed-crewed-spacecraft/",
+        "summary": "Russia says it has a \"promising, reusable manned transport spacecraft.\"",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663646+00:00",
+        "domain": "arstechnica.com",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 77,
+      "failure_reasons": [],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.710586+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40167",
+        "title": "Quantum Space Executes Launch Processing Agreement with All Points Logistics for Prime Mission",
+        "raw_date": "2026-09-30T13:00:00Z",
+        "publisher": "SpaceNews",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://spacenews.com/quantum-space-executes-launch-processing-agreement-with-all-points-logistics-for-prime-mission/",
+        "summary": "\nROCKVILLE, Md. and MERRITT ISLAND, Fla. \u2014 September 30, 2026 \u2014 Quantum Space, LLC (the \u201cCompany\u201d or \u201cQuantum Space\u201d), a company developing the next generation of advanced maneuverable spacecraft for [\u2026]\nThe post Quantum Space Executes Launch Processing Agreement with All Points ",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663646+00:00",
+        "domain": "spacenews.com",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 84,
+      "failure_reasons": [],
+      "audit_checks": {
+        "domain_whitelisted": true,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.711110+00:00"
+    },
+    {
+      "candidate": {
+        "candidate_id": "snapi-40166",
+        "title": "ESA Selects Airbus and OHB to Lead European Space Station Studies",
+        "raw_date": "2026-09-30T10:10:12Z",
+        "publisher": "European Spaceflight",
+        "agency": "Multi-Agency / Global",
+        "source_url": "https://europeanspaceflight.com/esa-selects-airbus-and-ohb-to-lead-european-space-station-studies/",
+        "summary": "The European Space Agency has selected consortia led by Airbus Defence and Space and OHB to carry out parallel studies examining the feasibility of a future European-led outpost in low Earth orbit. ESA announced the two lead companies on 29 September. The agency added that six ad",
+        "discovery_source": "SNAPI v4 Aggregator",
+        "discovered_at": "2026-10-01T12:33:01.663646+00:00",
+        "domain": "europeanspaceflight.com",
+        "candidate_type": "aerospace_report"
+      },
+      "confidence_score": 65,
+      "failure_reasons": [
+        "Domain 'europeanspaceflight.com' not in authoritative aerospace whitelist"
+      ],
+      "audit_checks": {
+        "domain_whitelisted": false,
+        "temporal_syntax_valid": true,
+        "aerospace_entity_match": true,
+        "content_integrity_valid": true
+      },
+      "quarantined_at": "2026-10-01T12:33:01.711110+00:00"
+    }
+  ]
+}

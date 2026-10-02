@@ -1,0 +1,496 @@
+/**
+ * CosmosCommand - Holographic Calendar Stylesheet
+ * Cyber-grid calendar, glowing event pills, and timeline feed view.
+ */
+
+/* CALENDAR TOOLBAR */
+.calendar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-neon);
+  border-radius: 10px;
+  padding: 12px 18px;
+  margin-bottom: 16px;
+}
+
+.month-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.current-month-display {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #fff;
+  min-width: 200px;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.4);
+}
+
+.btn-nav-arrow {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-neon);
+  color: var(--accent-cyan);
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.btn-nav-arrow:hover {
+  background: rgba(56, 189, 248, 0.2);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+/* Category Filters Bar */
+.calendar-filters-group {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-chip {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-dim);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 5px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.filter-chip:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-chip.active.chip-launches {
+  background: rgba(37, 99, 235, 0.25);
+  border-color: var(--accent-blue);
+  color: #93c5fd;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.35);
+}
+
+.filter-chip.active.chip-anniv {
+  background: rgba(234, 179, 8, 0.25);
+  border-color: var(--accent-gold);
+  color: #fef08a;
+  box-shadow: 0 0 8px rgba(234, 179, 8, 0.35);
+}
+
+.filter-chip.active.chip-natural {
+  background: rgba(168, 85, 247, 0.25);
+  border-color: var(--accent-purple);
+  color: #e9d5ff;
+  box-shadow: 0 0 8px rgba(168, 85, 247, 0.35);
+}
+
+.filter-chip.active.chip-asteroids {
+  background: rgba(239, 68, 68, 0.25);
+  border-color: var(--accent-red);
+  color: #fca5a5;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.35);
+}
+
+.filter-chip.active.chip-news {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: var(--accent-emerald);
+  color: #a7f3d0;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.35);
+}
+
+.filter-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.search-agency-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cyber-select {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-neon);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  outline: none;
+  cursor: pointer;
+}
+
+.cyber-search-box input {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-neon);
+  color: #fff;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  outline: none;
+  width: 170px;
+  transition: all 0.2s;
+}
+
+.cyber-search-box input:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+  width: 210px;
+}
+
+/* HOLOGRAPHIC CALENDAR GRID */
+.calendar-grid-card {
+  background: var(--bg-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-neon);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.calendar-weekdays-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: rgba(3, 7, 18, 0.75);
+  border-bottom: 1px solid var(--border-neon);
+}
+
+.weekday-header {
+  padding: 10px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--accent-cyan);
+}
+
+.calendar-cells-matrix {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  background: rgba(255, 255, 255, 0.03);
+  gap: 1px;
+}
+
+.calendar-day-cell {
+  background: rgba(15, 23, 42, 0.65);
+  min-height: 120px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s;
+  position: relative;
+}
+
+.calendar-day-cell:hover {
+  background: rgba(30, 41, 59, 0.85);
+}
+
+.calendar-day-cell.other-month {
+  background: rgba(10, 15, 26, 0.4);
+  opacity: 0.45;
+}
+
+.calendar-day-cell.is-today {
+  background: rgba(37, 99, 235, 0.12);
+  border: 1px solid rgba(56, 189, 248, 0.6);
+  box-shadow: inset 0 0 14px rgba(56, 189, 248, 0.15);
+}
+
+.day-cell-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2px;
+}
+
+.day-num {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.today-marker {
+  font-family: var(--font-display);
+  font-size: 0.58rem;
+  font-weight: 700;
+  background: var(--accent-cyan);
+  color: #030712;
+  padding: 1px 4px;
+  border-radius: 3px;
+  letter-spacing: 0.5px;
+}
+
+.day-event-count {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+  padding: 1px 5px;
+  border-radius: 10px;
+}
+
+.day-cell-events {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+/* EVENT PILL STYLES */
+.cal-event-pill {
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 2.5px solid transparent;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.cal-event-pill:hover {
+  transform: translateX(2px);
+  filter: brightness(1.2);
+}
+
+.event-pill-icon {
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.event-pill-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+.event-pill-extra {
+  font-size: 0.62rem;
+  opacity: 0.8;
+  margin-left: auto;
+  font-family: var(--font-mono);
+}
+
+/* Badge Color Themes */
+.cal-event-pill.badge-launch {
+  background: rgba(37, 99, 235, 0.22);
+  border-left-color: var(--accent-blue);
+  color: #bfdbfe;
+}
+
+.cal-event-pill.badge-anniversary {
+  background: rgba(234, 179, 8, 0.22);
+  border-left-color: var(--accent-gold);
+  color: #fef08a;
+}
+
+.cal-event-pill.badge-natural {
+  background: rgba(168, 85, 247, 0.22);
+  border-left-color: var(--accent-purple);
+  color: #e9d5ff;
+}
+
+.cal-event-pill.badge-asteroid {
+  background: rgba(239, 68, 68, 0.22);
+  border-left-color: var(--accent-red);
+  color: #fca5a5;
+}
+
+.cal-event-pill.badge-news {
+  background: rgba(16, 185, 129, 0.22);
+  border-left-color: var(--accent-emerald);
+  color: #a7f3d0;
+}
+
+.cal-more-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.1);
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.cal-more-pill:hover {
+  background: rgba(56, 189, 248, 0.25);
+}
+
+/* TIMELINE STREAM VIEW */
+.timeline-wrapper {
+  background: var(--bg-panel);
+  border: 1px solid var(--border-neon);
+  border-radius: 10px;
+  padding: 24px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline-events-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 32px;
+}
+
+.timeline-events-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 14px; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple), transparent);
+}
+
+.timeline-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.timeline-badge-node {
+  position: absolute;
+  left: -32px;
+  top: 6px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #0f172a;
+  border: 2px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  box-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.timeline-content-card {
+  flex: 1;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: all 0.25s;
+}
+
+.timeline-item:hover .timeline-content-card {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+  transform: translateX(4px);
+}
+
+.timeline-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.timeline-category-tag {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.timeline-category-tag.launch { background: rgba(37, 99, 235, 0.2); color: #93c5fd; }
+.timeline-category-tag.anniversary { background: rgba(234, 179, 8, 0.2); color: #fef08a; }
+.timeline-category-tag.natural { background: rgba(168, 85, 247, 0.2); color: #e9d5ff; }
+.timeline-category-tag.asteroid { background: rgba(239, 68, 68, 0.2); color: #fca5a5; }
+.timeline-category-tag.news { background: rgba(16, 185, 129, 0.2); color: #a7f3d0; }
+
+.timeline-datetime {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.timeline-title {
+  font-size: 1.05rem;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.timeline-details {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin-bottom: 12px;
+}
+
+.timeline-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 3px 8px;
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.footer-chip.warning {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+.btn-timeline-inspect {
+  margin-left: auto;
+  background: transparent;
+  border: 1px solid var(--border-neon);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-timeline-inspect:hover {
+  background: rgba(56, 189, 248, 0.15);
+}
